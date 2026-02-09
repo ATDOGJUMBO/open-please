@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 13th Monthsary & Valentine's Day ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Romantic pairing -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- SPLASH SCREEN - Click to enter and auto-play music -->
+    <div id="splash-screen" onclick="enterSite()">
+        <div class="splash-content">
+            <h1 class="splash-title">💕</h1>
+            <p class="splash-text">I made something special for you</p>
+            <button class="splash-btn">Open My Heart ❤️</button>
+        </div>
+    </div>
+
+    <!-- Audio element (hidden, controlled by JS) -->
+    <audio id="background-music" src="music/be-with-you.mp3" loop></audio>
+
+    <!-- Main website (hidden until splash screen is clicked) -->
+    <div id="main-site" style="display: none;">
+
+    <!-- Floating hearts background animation container -->
+    <div id="hearts-container"></div>
+
+    <!-- HERO SECTION
+         CUSTOMIZE: Change the title, subtitle, and background as needed -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Happy 13th Monthsary & Valentine's Day ❤️</h1>
+            <p class="hero-subtitle">13 months of beautiful moments, countless laughs, and infinite love.</p>
+        </div>
+        <div class="hero-background"></div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION
+         CUSTOMIZE: Replace image URLs with your own photos
+         Instructions: Find "REPLACE_WITH_YOUR_PHOTO" and change to your image URL
+         You can use:
+         - Local files: img/photo1.jpg
+         - External URLs: https://example.com/photo.jpg
+         - Base64 encoded images (optional for Base64 data URLs) -->
+    <section id="gallery" class="gallery">
+        <div class="section-header">
+            <h2>Our Favorite Moments</h2>
+            <p>Click any photo to enlarge</p>
+        </div>
+        <div class="gallery-grid">
+            <!-- Photo 1 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo1.jpg" alt="Our moment 1" onclick="openModal(this)">
+            </div>
+            <!-- Photo 2 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo2.jpg" alt="Our moment 2" onclick="openModal(this)">
+            </div>
+            <!-- Photo 3 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo3.jpg" alt="Our moment 3" onclick="openModal(this)">
+            </div>
+            <!-- Photo 4 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo4.jpg" alt="Our moment 4" onclick="openModal(this)">
+            </div>
+            <!-- Photo 5 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo5.jpg" alt="Our moment 5" onclick="openModal(this)">
+            </div>
+            <!-- Photo 6 - CUSTOMIZE: Replace src with your image -->
+            <div class="gallery-item">
+                <img src="images/photo6.jpg" alt="Our moment 6" onclick="openModal(this)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for enlarged photo view -->
+    <div id="photo-modal" class="modal" onclick="closeModal(event)">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- LOVE LETTER SECTION
+         CUSTOMIZE: Edit the letter text, date, and sender name below -->
+    <section id="letter" class="letter-section">
+        <div class="section-header">
+            <h2>A Letter From My Heart</h2>
+        </div>
+        <div class="letter-card">
+            <div class="letter-header">
+                <h3>My Dearest Kate,</h3>
+                <p class="letter-date">February 13th, 2026</p>
+            </div>
+            <div class="letter-content">
+                <!-- CUSTOMIZE: Edit the letter text here -->
+                <p>
+                    Happy 13th Monthsary and Happy Valentine's Day, baby ❤️
+                </p>
+                <p>
+                    I just want to take a moment to tell you how grateful I am to have you in my life. Thirteen months might sound like just a number, but to me, it represents countless memories, laughter, late-night talks, small arguments we grew from, and moments where I realized again and again how lucky I am to love you.
+                </p>
+                <p>
+                    Baby, thank you for being my comfort on hard days and my happiness on the good ones. Thank you for your patience, your understanding, and for choosing me even when I'm not at my best. You've shown me what it means to care deeply for someone, and being with you has made my world softer, brighter, and more meaningful.
+                </p>
+                <p>
+                    This Valentine's Day, I don't just celebrate love in general I celebrate us. I celebrate your smile, your voice, your presence, and every little thing that makes you who you are. You're not just my girlfriend you're my partner, my safe place, and someone I want to keep building memories with.
+                </p>
+                <p>
+                    I promise to continue growing with you, supporting you, and loving you in the ways you deserve. No matter where life takes us, I hope we keep holding on to what we have because what we share is something truly special to me.
+                </p>
+                <p class="letter-closing">
+                    Happy 13th monthsary, baby.<br>
+                    Happy Valentine's Day.<br>
+                    <span class="sender-name">I love you always ❤️</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MUSIC PLAYER SECTION -->
+    <section id="music" class="music-section">
+        <div class="section-header">
+            <h2>Our Song</h2>
+            <p>The soundtrack to our love story</p>
+        </div>
+        <div class="player-container">
+            <p class="player-text">🎵 Now Playing: Be With You by The Ridleys ✨</p>
+            <div class="player-controls">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                    <input type="range" id="progress-slider" class="progress-slider" min="0" max="100" value="0" step="1" onchange="seekMusic(this.value)">
+                </div>
+                <span id="time-display" class="time-display">0:00 / 0:00</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER
+         CUSTOMIZE: Edit the name and any footer text -->
+    <footer class="footer">
+        <p>Made with <span class="heart-icon">❤️</span> by your baby Aj Dionisio</p>
+        <p class="footer-date">Happy 13th Monthsary & Valentine's Day 2026</p>
+    </footer>
+
+    </div><!-- End of main-site -->
+
+    <!-- TWO PLAYFUL CATS - Roam freely around the screen -->
+    <div id="cat1" class="roaming-cat" onclick="catMeow(this)">
+        <div class="cat-speech"></div>
+        <div class="cat-sprite cat-white">
+            <svg viewBox="0 0 200 200" width="80" height="80">
+                <!-- Body -->
+                <ellipse cx="100" cy="135" rx="50" ry="40" fill="#F5F5F5" stroke="#C0C0C0" stroke-width="2"/>
+                <!-- Head -->
+                <circle cx="100" cy="80" r="38" fill="#F5F5F5" stroke="#C0C0C0" stroke-width="2"/>
+                <!-- Left ear -->
+                <polygon points="68,55 58,20 85,48" fill="#F5F5F5" stroke="#C0C0C0" stroke-width="1.5"/>
+                <polygon points="70,52 63,28 82,48" fill="#E0D6D6"/>
+                <!-- Right ear -->
+                <polygon points="132,55 142,20 115,48" fill="#F5F5F5" stroke="#C0C0C0" stroke-width="1.5"/>
+                <polygon points="130,52 137,28 118,48" fill="#E0D6D6"/>
+                <!-- Eyes -->
+                <ellipse class="cat-eye-left" cx="85" cy="78" rx="8" ry="9" fill="white" stroke="#999" stroke-width="1.5"/>
+                <ellipse class="cat-eye-right" cx="115" cy="78" rx="8" ry="9" fill="white" stroke="#999" stroke-width="1.5"/>
+                <circle class="cat-pupil-left" cx="87" cy="79" r="5" fill="#333"/>
+                <circle class="cat-pupil-right" cx="117" cy="79" r="5" fill="#333"/>
+                <circle cx="89" cy="77" r="2" fill="white"/>
+                <circle cx="119" cy="77" r="2" fill="white"/>
+                <!-- Blush -->
+                <ellipse cx="72" cy="92" rx="8" ry="5" fill="#FFCCD5" opacity="0.4"/>
+                <ellipse cx="128" cy="92" rx="8" ry="5" fill="#FFCCD5" opacity="0.4"/>
+                <!-- Nose -->
+                <ellipse cx="100" cy="90" rx="4" ry="3" fill="#FFB0B0"/>
+                <!-- Mouth -->
+                <path d="M93 95 Q100 103 107 95" stroke="#FFB0B0" stroke-width="2" fill="none"/>
+                <!-- Whiskers -->
+                <line x1="55" y1="85" x2="80" y2="88" stroke="#CCC" stroke-width="1.5"/>
+                <line x1="55" y1="93" x2="80" y2="92" stroke="#CCC" stroke-width="1.5"/>
+                <line x1="120" y1="88" x2="145" y2="85" stroke="#CCC" stroke-width="1.5"/>
+                <line x1="120" y1="92" x2="145" y2="93" stroke="#CCC" stroke-width="1.5"/>
+                <!-- Front paws -->
+                <ellipse cx="75" cy="168" rx="12" ry="8" fill="#EBEBEB" stroke="#C0C0C0" stroke-width="1.5"/>
+                <ellipse cx="125" cy="168" rx="12" ry="8" fill="#EBEBEB" stroke="#C0C0C0" stroke-width="1.5"/>
+                <!-- Tail -->
+                <path class="cat-tail-anim" d="M150 135 Q175 110 165 85" stroke="#E0E0E0" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <path class="cat-tail-anim" d="M150 135 Q175 110 165 85" stroke="#C0C0C0" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.3"/>
+                <!-- Heart on chest -->
+                <text x="93" y="142" font-size="18">🤍</text>
+            </svg>
+        </div>
+    </div>
+
+    <div id="cat2" class="roaming-cat" onclick="catMeow(this)">
+        <div class="cat-speech"></div>
+        <div class="cat-sprite cat-grey">
+            <svg viewBox="0 0 200 200" width="80" height="80">
+                <!-- Body -->
+                <ellipse cx="100" cy="135" rx="50" ry="40" fill="#A8A8A8" stroke="#777" stroke-width="2"/>
+                <!-- Head -->
+                <circle cx="100" cy="80" r="38" fill="#A8A8A8" stroke="#777" stroke-width="2"/>
+                <!-- Left ear -->
+                <polygon points="68,55 58,20 85,48" fill="#A8A8A8" stroke="#777" stroke-width="1.5"/>
+                <polygon points="70,52 63,28 82,48" fill="#888888"/>
+                <!-- Right ear -->
+                <polygon points="132,55 142,20 115,48" fill="#A8A8A8" stroke="#777" stroke-width="1.5"/>
+                <polygon points="130,52 137,28 118,48" fill="#888888"/>
+                <!-- Eyes -->
+                <ellipse class="cat-eye-left" cx="85" cy="78" rx="8" ry="9" fill="white" stroke="#666" stroke-width="1.5"/>
+                <ellipse class="cat-eye-right" cx="115" cy="78" rx="8" ry="9" fill="white" stroke="#666" stroke-width="1.5"/>
+                <circle class="cat-pupil-left" cx="87" cy="79" r="5" fill="#333"/>
+                <circle class="cat-pupil-right" cx="117" cy="79" r="5" fill="#333"/>
+                <circle cx="89" cy="77" r="2" fill="white"/>
+                <circle cx="119" cy="77" r="2" fill="white"/>
+                <!-- Blush -->
+                <ellipse cx="72" cy="92" rx="8" ry="5" fill="#FFCCD5" opacity="0.35"/>
+                <ellipse cx="128" cy="92" rx="8" ry="5" fill="#FFCCD5" opacity="0.35"/>
+                <!-- Nose -->
+                <ellipse cx="100" cy="90" rx="4" ry="3" fill="#FFB0B0"/>
+                <!-- Mouth -->
+                <path d="M93 95 Q100 103 107 95" stroke="#FFB0B0" stroke-width="2" fill="none"/>
+                <!-- Whiskers -->
+                <line x1="55" y1="85" x2="80" y2="88" stroke="#999" stroke-width="1.5"/>
+                <line x1="55" y1="93" x2="80" y2="92" stroke="#999" stroke-width="1.5"/>
+                <line x1="120" y1="88" x2="145" y2="85" stroke="#999" stroke-width="1.5"/>
+                <line x1="120" y1="92" x2="145" y2="93" stroke="#999" stroke-width="1.5"/>
+                <!-- Front paws -->
+                <ellipse cx="75" cy="168" rx="12" ry="8" fill="#9A9A9A" stroke="#777" stroke-width="1.5"/>
+                <ellipse cx="125" cy="168" rx="12" ry="8" fill="#9A9A9A" stroke="#777" stroke-width="1.5"/>
+                <!-- Tail -->
+                <path class="cat-tail-anim" d="M150 135 Q175 110 165 85" stroke="#A8A8A8" stroke-width="10" fill="none" stroke-linecap="round"/>
+                <path class="cat-tail-anim" d="M150 135 Q175 110 165 85" stroke="#777" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.3"/>
+                <!-- Heart on chest -->
+                <text x="93" y="142" font-size="18">🩶</text>
+            </svg>
+        </div>
+    </div>
+
+    <!-- JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
