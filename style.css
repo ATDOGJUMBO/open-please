@@ -224,7 +224,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: visible;
     text-align: center;
     padding: 2rem;
 }
@@ -320,7 +321,7 @@ body {
 /* Rose bouquets in hero */
 .rose-bouquets-container {
     position: absolute;
-    bottom: -20px;
+    bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
