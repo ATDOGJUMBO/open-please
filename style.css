@@ -317,6 +317,62 @@ body {
     transform: translateY(-1px);
 }
 
+/* Rose bouquets in hero */
+.rose-bouquets-container {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 0.5rem;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.rose-bouquet {
+    animation: roseFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+    max-width: 160px;
+}
+
+.rose-bouquet svg {
+    width: 100%;
+    height: auto;
+}
+
+.rose-left {
+    animation-delay: 0s;
+    transform-origin: bottom center;
+}
+
+.rose-center {
+    animation-delay: 0.6s;
+    transform-origin: bottom center;
+}
+
+.rose-right {
+    animation-delay: 1.2s;
+    transform-origin: bottom center;
+}
+
+@keyframes roseFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(0.5deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-10px) rotate(-0.5deg);
+    }
+}
+
 /* Responsive Hero */
 @media (max-width: 768px) {
     .hero {
@@ -335,6 +391,15 @@ body {
     .cta-button {
         padding: 12px 30px;
         font-size: 0.95rem;
+    }
+
+    .rose-bouquets-container {
+        bottom: -10px;
+        padding: 0 0.5rem;
+    }
+
+    .rose-bouquet {
+        max-width: 100px;
     }
 }
 
