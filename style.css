@@ -335,12 +335,14 @@ body {
 .rose-bouquet {
     animation: roseFloat 4s ease-in-out infinite;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
-    max-width: 160px;
+    width: 160px;
+    flex-shrink: 0;
 }
 
 .rose-bouquet svg {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .rose-left {
@@ -399,7 +401,7 @@ body {
     }
 
     .rose-bouquet {
-        max-width: 100px;
+        width: 100px;
     }
 }
 
